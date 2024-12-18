@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "CREATE TABLE Films (\r     id INT PRIMARY KEY AUTO_INCREMENT,\r     title VARCHAR(100) NOT NULL,\r     description TEXT,\r     year YEAR CHECK (year <= YEAR(CURRENT_DATE)),\r     poster VARCHAR(255)\r )",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.5",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  }
+}
