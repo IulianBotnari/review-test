@@ -95,7 +95,7 @@ server.post('/register', async (req, res) => {
 })
 
 
-server.post('login', passport.authenticate('local', { session: false }), (req, res) => {
+server.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
     // crea un token JWT
 
     const token = jwt.sign({ userId: req.user.id }, secret_key, { expiresIn: '1h' })
