@@ -57,7 +57,7 @@ passport.use(new LocalStrategy(
 
 
 // Serializzazione del utente 
-passport.use.serializeUser((user, done) => done(null, user.id))
+passport.serializeUser((user, done) => done(null, user.id))
 
 
 // Deserializzazione del utente
