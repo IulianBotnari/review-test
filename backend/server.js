@@ -34,7 +34,7 @@ db.query('SELECT * FROM users', (err, result) => {
 
 
 
-
+// 
 
 passport.use(new LocalStrategy(
     async (username, password, done) => {
@@ -43,11 +43,11 @@ passport.use(new LocalStrategy(
 
                 if (err) throw done(err)
 
-                const user = result[0] // da capire perchè --> result[0] e non result e basta <---
+                const user = result[0] // da capire perchè --> result[0] e non result e basta <--- risposta: result e un array con un solo oggetto dentro, lo 0 serve a selezionare l'oggetto (l'utente completo in questo caso) e non l'array contente l'oggetto.
                 if (!user) return done(null, false, { message: 'Incorrect user' })
 
 
-                const isMatch = await bcrypt.compare(password, user.password) // ⬅️ possibile bug, oppure e da capire meeglio questa riga
+                const isMatch = await bcrypt.compare(password, user.password) // ⬅️ possibile bug, oppure e da capire meeglio questa riga --> password è una chiave del oggetto user contentente le chiavi id, username, password, email.
                 if (!isMatch) return done(null, false, { message: 'Incorrect password' })
 
                 return done(null, user)
@@ -92,7 +92,18 @@ server.post('/register', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: 'Errore durante la registrazione' })
     }
-});
+})
+
+
+server.post('login', passport.authenticate('local', { session: false }), (req, res) => {
+    // crea un token JWT
+
+    const token = jwt.sign({ userId: req.user.id }, secret_key, { expiresIn: '1h' })
+    res.json({ token })
+})
+
+
+
 
 
 
