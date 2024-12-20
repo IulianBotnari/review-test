@@ -4,9 +4,9 @@ import { useState } from "react";
 export default function LoginPage() {
 
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [token, setToken] = useState(null); // Salva il token, ad esempio in uno stato
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
 
 
 
@@ -26,9 +26,11 @@ export default function LoginPage() {
             if (data.token) {
                 console.log(data.token);
 
-                setToken(data.token); // Salva il token, ad esempio in uno stato
+                localStorage.setItem('token', data.token)
+
+                alert("Login successful")
             } else {
-                throw new Error('Token not found in response');
+                throw new Error('No token')
             }
         }
         catch (err) {

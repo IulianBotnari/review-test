@@ -67,6 +67,23 @@ passport.deserializeUser((id, done) => {
         done(null, result[0])
     })
 })
+
+
+const authenticateJWT = (req, res, next) => {
+    const token = req.header('Authorization')?.split(' ')[1] // Estrai il token dal header Authorization
+
+    if (!token) {
+        return res.status(403).json({ message: 'Access denied, no token provided' })
+    }
+
+    jwt.verify(token, secret_key, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ message: 'Invalid token' })
+        }
+        req.user = decoded // Aggiungi l'utente decodificato alla richiesta
+        next() // Vai alla rotta successiva
+    })
+}
 // rotta per registrare l'utente
 server.post('/register', async (req, res) => {
     const { username, password, email } = req.body;
@@ -95,6 +112,10 @@ server.post('/register', async (req, res) => {
 })
 
 
+server.get('/protected', authenticateJWT, (req, res) => {
+    res.json({ message: 'This is a protected route', user: req.user })
+})
+
 server.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
     // crea un token JWT
 
@@ -111,7 +132,7 @@ server.post('/login', passport.authenticate('local', { session: false }), (req, 
 
 
 
-server.get('/', router)
+server.get('/', authenticateJWT, router)
 
 
 

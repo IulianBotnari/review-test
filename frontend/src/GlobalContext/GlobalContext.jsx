@@ -12,17 +12,23 @@ export const GlobalContext = ({ children }) => {
 
     async function getFilms() {
         try {
-            const response = await fetch('http://127.0.0.1:3000')
+            const response = await fetch('http://127.0.0.1:3000', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
+
             const data = await response.json();
             console.log(data);
             setFilms(data);
 
-
-        }
-        catch (err) {
+        } catch (err) {
             console.error('There has been a problem with your fetch operation:', err);
             // Error handling code here...
             alert('An error occurred while fetching data. Please try again later.');
