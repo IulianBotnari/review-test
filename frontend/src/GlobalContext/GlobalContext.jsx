@@ -6,8 +6,14 @@ const context = createContext()
 
 export const GlobalContext = ({ children }) => {
 
-    const [films, setFilms] = useState();
+    const [films, setFilms] = useState([]);
+    const [logged, setLogged] = useState('');
     console.log(films);
+
+    console.log(logged);
+
+
+
 
 
     async function getFilms() {
@@ -21,26 +27,30 @@ export const GlobalContext = ({ children }) => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                console.log(response.status);
+                setFilms([]);
+            } else {
+
+                const data = await response.json();
+                console.log(data);
+                setFilms(data);
             }
 
-            const data = await response.json();
-            console.log(data);
-            setFilms(data);
 
         } catch (err) {
             console.error('There has been a problem with your fetch operation:', err);
             // Error handling code here...
-            alert('An error occurred while fetching data. Please try again later.');
+            // alert('An error occurred while fetching data. Please try again later.');
         }
     }
 
     useEffect(() => {
         getFilms()
-    }, []);
+    }, [logged]);
 
     const values = {
-        films
+        films,
+        setLogged
 
     }
 

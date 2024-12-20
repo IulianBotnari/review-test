@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useGlobalContext } from "../GlobalContext/GlobalContext";
 
 
 export default function LoginPage() {
-
+    const { setLogged } = useGlobalContext()
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
 
 
 
@@ -27,6 +29,7 @@ export default function LoginPage() {
                 console.log(data.token);
 
                 localStorage.setItem('token', data.token)
+                setLogged('true')
 
                 alert("Login successful")
             } else {
