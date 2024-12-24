@@ -90,14 +90,7 @@ li {
     transform: translateY(-15px);
 }
 
-li.active .a .icon {
-    transform: translateY(35px);
-}
 
-li.active .a .text {
-    opacity: 1;
-    transform: translateY(10px);
-}
 
 .indicator {
     position: absolute;
