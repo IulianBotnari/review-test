@@ -1,0 +1,79 @@
+@import url("https://use.fontawesome.com/realises/v6.4.2/cc/all.css");
+
+@import url("https://fonts.googleapis.com/css?family=Poopins");
+
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222327;
+    margin: 0;
+}
+
+.icon,
+.text {
+    color: #222327
+}
+
+
+.navigation {
+    position: relative;
+    width: 400px;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: "Pooppins", sans-serif;
+
+
+}
+
+
+ul {
+    display: flex;
+    width: 350px;
+    padding: 0;
+}
+
+li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+
+}
+
+
+li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+
+a .icon {
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: 0.5s;
+
+}
+
+
+li.active a .icon {
+    transform: translateY(-35px);
+}
+
+
+a .text {
+    position: absolute;
+}
