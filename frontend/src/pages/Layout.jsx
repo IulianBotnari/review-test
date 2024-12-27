@@ -18,7 +18,7 @@ export default function Layout() {
             <main>
                 <Outlet />
             </main>
-            <footer className='bg-dark text-light d-flex justify-content-center py-2'>
+            <footer className='text-light d-flex justify-content-center py-2'>
                 <p>Footer</p>
             </footer>
 

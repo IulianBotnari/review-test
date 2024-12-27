@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Style from './RegistrationPage.module.css'
 export default function RegistrationPage() {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
@@ -20,25 +20,35 @@ export default function RegistrationPage() {
 
     return (
         <>
-            <form onSubmit={handleRegistration}>
-                <div className="mb-3">
-                    <label forhtml="InputEmail" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="InputEmail" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div className="mb-3">
-                    <label forhtml="InputUser" className="form-label">Username</label>
-                    <input type="text" className="form-control" id="InputUser" aria-describedby="textHelp" onChange={(e) => setUsername(e.target.value)} />
-                    <div id="emailHelp" className="form-text">We'll never share your user with anyone else.</div>
-                </div>
 
-                <div className="mb-3">
-                    <label forhtml="InputPassword" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="InputPassword" onChange={(e) => setPassword(e.target.value)} />
-                </div>
+            <div className={`d-flex ${Style.container}`}>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                <div className='col-6 d-flex flex-column justify-content-center' >
+                    <h2 className={`${Style.text}`}>Registration</h2>
+                    <p className={`${Style.text}`}>Register a new account</p>
+                    <img className='w-100' src="/register_image.jpg" />
+                </div>
+                <form className=' ' onSubmit={handleRegistration}>
+                    <div className="mb-3">
+                        <label forhtml="InputEmail" className="form-label">Email address</label>
+                        <input type="email" className="form-control" id="InputEmail" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
+                        <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div className="mb-3">
+                        <label forhtml="InputUser" className="form-label">Username</label>
+                        <input type="text" className="form-control" id="InputUser" aria-describedby="textHelp" onChange={(e) => setUsername(e.target.value)} />
+                        <div id="emailHelp" className="form-text">We'll never share your user with anyone else.</div>
+                    </div>
+
+                    <div className="mb-3">
+                        <label forhtml="InputPassword" className="form-label">Password</label>
+                        <input type="password" className="form-control" id="InputPassword" onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+
+                    <button type="submit" className="btn btn-dark">Submit</button>
+                </form>
+
+            </div>
         </>
 
     )
