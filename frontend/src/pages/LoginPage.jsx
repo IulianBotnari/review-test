@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGlobalContext } from "../GlobalContext/GlobalContext";
+import Style from './LoginPage.module.css'
 
 
 export default function LoginPage() {
@@ -42,21 +43,35 @@ export default function LoginPage() {
     }
     return (
         <>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="text"
-                    placeholder="Username"
 
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
 
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">Login</button>
-            </form>
+            <div className={` ${Style.container}`}>
+
+                <div className={`${Style.form_container}`}>
+
+                    <h2>Effettual il login per favore</h2>
+
+                    <form className={`mt-5 ${Style.card}`} onSubmit={handleLogin}>
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            className="form-control my-2"
+
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            className="form-control my-2"
+
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <button className="btn btn-secondary" type="submit">Login</button>
+                    </form>
+
+
+                </div>
+            </div>
         </>
 
     )

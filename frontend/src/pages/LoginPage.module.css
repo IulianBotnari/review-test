@@ -1,0 +1,29 @@
+.container {
+    height: 80vh;
+    background-image: url(../../public/Bg_signIn.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.card {
+
+
+    padding: 30px;
+    background-color: rgb(207, 200, 200);
+    border-radius: 10px;
+    box-shadow: inset -1px 0px 20px 19px rgba(76, 206, 223, 0.1);
+}
+
+.form_container {
+
+    padding: 100px 50px;
+    background-color: white;
+    height: 70%;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: inset 1px 0px 20px 19px rgb(187 181 181)
+}
