@@ -6,6 +6,7 @@ import Layout from './pages/Layout'
 import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import HomePage from './pages/HomePage'
+import ReviewPage from './pages/ReviewPage'
 import { GlobalContext } from './GlobalContext/GlobalContext'
 
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/home" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signin" element={<RegistrationPage />} />
+              <Route path="/review/:username" element={<ReviewPage />} />
 
 
             </Route>

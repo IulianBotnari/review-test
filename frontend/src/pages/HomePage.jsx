@@ -29,7 +29,7 @@ export default function HomePage() {
             <div className="mb-3">
                 <details>
                     <summary>Utente: {user}</summary>
-                    <a href="/review">Vai alle tue recensioni</a><br />
+                    <a href={`/review/${user}`}>Vai alle tue recensioni</a><br />
                     <button onClick={handleLogout} className='btn btn-dark'> Logout</button>
 
                 </details>
