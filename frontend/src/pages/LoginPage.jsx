@@ -3,9 +3,9 @@ import { useGlobalContext } from "../GlobalContext/GlobalContext";
 
 
 export default function LoginPage() {
-    const { setLogged } = useGlobalContext()
+    const { setLogged, setUsername, username } = useGlobalContext()
 
-    const [username, setUsername] = useState('')
+
     const [password, setPassword] = useState('')
 
 

@@ -8,6 +8,7 @@ export const GlobalContext = ({ children }) => {
 
     const [films, setFilms] = useState([]);
     const [logged, setLogged] = useState('');
+    const [username, setUsername] = useState('')
     console.log(films);
 
     console.log(logged);
@@ -50,7 +51,9 @@ export const GlobalContext = ({ children }) => {
 
     const values = {
         films,
-        setLogged
+        setLogged,
+        setUsername,
+        username
 
     }
 
