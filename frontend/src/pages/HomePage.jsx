@@ -4,12 +4,26 @@ import { useGlobalContext } from "../GlobalContext/GlobalContext";
 
 
 export default function HomePage() {
-    const { films } = useGlobalContext()
+    const { films, setLogged } = useGlobalContext()
+
+    const handleLogout = () => {
+
+        localStorage.removeItem('token');
+        setLogged('false')
+
+    };
 
 
     return (
         <>
+            <div className="mb-3">
+                <details>
+                    <summary>Utente: Botnari</summary>
+                    <a href="/review">Vai alle tue recensioni</a><br />
+                    <button onClick={handleLogout} className='btn btn-dark'> Logout</button>
 
+                </details>
+            </div>
 
             {films && films.map(film => (
                 <div key={film.id}>
