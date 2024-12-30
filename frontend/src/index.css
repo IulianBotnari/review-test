@@ -5,6 +5,10 @@
 }
 
 
+main {
+    min-height: 80vh;
+}
+
 footer {
     height: 10vh;
     background-color: #222327 !important;

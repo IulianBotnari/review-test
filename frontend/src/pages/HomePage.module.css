@@ -5,6 +5,7 @@
 .div_container {
     background-color: rgb(196, 129, 48);
     margin-top: -1rem;
+    min-height: 80vh;
 }
 
 details {

@@ -49,11 +49,16 @@ export default function ReviewPage() {
     return (
         <>
             {reviews.map((review, index) => (
-                <div key={index}>
-                    <p>{review.title}</p>
+                <div key={index} className="d-flex my-2 border">
                     {films.map((film, filmindex) => (film.title === review.title ? <img style={{ width: '80px', borderRadius: '0' }} key={filmindex} src={`/${film.poster}`} alt={film.title} /> : null))}
-                    <p>{review.review}</p>
-                    {vote(review.vote)}
+                    <div className="mx-2">
+
+                        <p> Titolo: {review.title}</p>
+                        <p> Recenzione: {review.review}</p>
+                        <p> Voto: {vote(review.vote)}</p>
+
+                    </div>
+
                 </div>
             ))}
         </>
