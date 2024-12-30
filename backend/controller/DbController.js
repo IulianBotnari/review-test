@@ -35,10 +35,21 @@ const getUserReviews = ('/reviews/:username', (req, res) => {
 
 })
 
+const addReview = ('/addreview', (req, res) => {
+    const { film_id, user_id, review, vote, username, } = req.body
+    dbConnection.query('INSERT INTO reviews (film_id, user_id, review, vote, username) VALUES (?,?,?,?,?)', [film_id, user_id, review, vote, username], (error, results) => {
+        if (error) throw error;
+        res.json({ message: 'Review added successfully' });
+        console.log(results);
+    })
+
+})
+
 
 
 
 module.exports = {
     getFilms,
-    getUserReviews
+    getUserReviews,
+    addReview
 }

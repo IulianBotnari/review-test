@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "../GlobalContext/GlobalContext";
 import Style from "./HomePage.module.css"
+import { useNavigate } from "react-router";
 
 
 export default function HomePage() {
     const { films, setLogged, username } = useGlobalContext()
     const [user, setUser] = useState(localStorage.getItem('user'));
+
+    const navigate = useNavigate()
+
+    function goToReviewPage(params) {
+
+        return navigate(`/add/${params}`)
+
+    }
 
     useEffect(() => {
         if (username) {
@@ -46,6 +55,7 @@ export default function HomePage() {
                             <img src={film.poster} alt="poster" style={{ width: '100%' }} />
                         </div>
                         <p className="my-3"><i className="bi bi-search-heart p-1 bg-danger border rounded text-light" /> {film.description}</p>
+                        <button className="btn bg-light" btn-attribute={film.title} onClick={() => goToReviewPage(film.title)}>Lascia una recensione</button>
                     </div>
                 ))}
 

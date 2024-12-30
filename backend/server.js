@@ -134,6 +134,7 @@ server.post('/login', passport.authenticate('local', { session: false }), (req, 
 
 server.get('/', authenticateJWT, router)
 server.get('/reviews/:username', router)
+server.post('/addreview', router)
 
 
 

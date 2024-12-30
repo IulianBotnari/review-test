@@ -5,6 +5,7 @@ const dbController = require('../controller/DbController.js');
 
 router.get('/', dbController.getFilms)
 router.get('/reviews/:id', dbController.getUserReviews)
+router.post('/addreview', dbController.addReview)
 
 
 module.exports = router
