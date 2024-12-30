@@ -15,7 +15,7 @@ export default function Layout() {
             <Header />
 
 
-            <main>
+            <main className='mt-0'>
                 <Outlet />
             </main>
             <footer className='text-light d-flex justify-content-center py-2'>
