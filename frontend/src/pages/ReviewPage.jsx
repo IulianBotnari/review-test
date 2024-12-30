@@ -4,13 +4,15 @@ import { useEffect, useState } from "react"
 
 export default function ReviewPage() {
 
+    const { films } = useGlobalContext()
+
+    console.log(films);
+
+
     const { username } = useParams()
-    console.log(username);
 
 
     const [reviews, setReviews] = useState([])
-
-    console.log(reviews);
 
 
     async function getReviews() {
@@ -19,7 +21,6 @@ export default function ReviewPage() {
             const data = await response.json()
 
             setReviews(data)
-            console.log(data);
 
         } catch (err) {
             return console.error(err)
@@ -31,8 +32,16 @@ export default function ReviewPage() {
     }, [username])
 
 
-
-
+    function vote(vote) {
+        console.log(vote);
+        return (
+            <>
+                {Array.from({ length: vote }, index => (
+                    <i key={index} className="bi bi-star-fill text-warning" />
+                ))}
+            </>
+        );
+    }
 
 
 
@@ -42,8 +51,9 @@ export default function ReviewPage() {
             {reviews.map((review, index) => (
                 <div key={index}>
                     <p>{review.title}</p>
+                    {films.map((film, filmindex) => (film.title === review.title ? <img style={{ width: '80px', borderRadius: '0' }} key={filmindex} src={`/${film.poster}`} alt={film.title} /> : null))}
                     <p>{review.review}</p>
-                    <p>{review.vote}</p>
+                    {vote(review.vote)}
                 </div>
             ))}
         </>

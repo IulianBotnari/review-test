@@ -9,13 +9,6 @@ export const GlobalContext = ({ children }) => {
     const [films, setFilms] = useState([]);
     const [logged, setLogged] = useState('');
     const [username, setUsername] = useState('')
-    console.log(films);
-
-    console.log(logged);
-
-
-
-
 
     async function getFilms() {
         try {
@@ -28,12 +21,10 @@ export const GlobalContext = ({ children }) => {
             });
 
             if (!response.ok) {
-                console.log(response.status);
                 setFilms([]);
             } else {
 
                 const data = await response.json();
-                console.log(data);
                 setFilms(data);
             }
 
