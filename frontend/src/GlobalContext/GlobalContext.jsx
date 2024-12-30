@@ -9,6 +9,22 @@ export const GlobalContext = ({ children }) => {
     const [films, setFilms] = useState([]);
     const [logged, setLogged] = useState('');
     const [username, setUsername] = useState('')
+    const [users, setUsers] = useState({})
+    const [filmId, setFilmId] = useState()
+    console.log(users);
+
+
+
+    async function getUsers() {
+        try {
+            const response = await fetch('http://127.0.0.1:3000/getUsers')
+            const data = await response.json()
+            setUsers(data)
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     async function getFilms() {
         try {
@@ -38,13 +54,17 @@ export const GlobalContext = ({ children }) => {
 
     useEffect(() => {
         getFilms()
+        getUsers()
     }, [logged]);
 
     const values = {
         films,
         setLogged,
         setUsername,
-        username
+        username,
+        users,
+        setFilmId,
+        filmId
 
     }
 

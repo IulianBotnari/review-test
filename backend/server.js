@@ -50,10 +50,12 @@ passport.use(new LocalStrategy(
                 const isMatch = await bcrypt.compare(password, user.password) // ⬅️ possibile bug, oppure e da capire meeglio questa riga --> password è una chiave del oggetto user contentente le chiavi id, username, password, email.
                 if (!isMatch) return done(null, false, { message: 'Incorrect password' })
 
+
                 return done(null, user)
             })
         } catch (err) { return done(err) }
     }))
+
 
 
 // Serializzazione del utente 
@@ -134,7 +136,8 @@ server.post('/login', passport.authenticate('local', { session: false }), (req, 
 
 server.get('/', authenticateJWT, router)
 server.get('/reviews/:username', router)
-server.post('/addreview', router)
+server.get('/getUsers', router)
+server.post('/addreview', authenticateJWT, router)
 
 
 

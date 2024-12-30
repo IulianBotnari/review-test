@@ -45,11 +45,21 @@ const addReview = ('/addreview', (req, res) => {
 
 })
 
+const getUsers = ('/getuser', (req, res) => {
+
+    dbConnection.query('SELECT * FROM users', (error, results) => {
+        if (error) throw error;
+        res.json(results);
+        console.log(results);
+    })
+})
+
 
 
 
 module.exports = {
     getFilms,
     getUserReviews,
-    addReview
+    addReview,
+    getUsers
 }

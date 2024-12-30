@@ -5,12 +5,17 @@ import { useNavigate } from "react-router";
 
 
 export default function HomePage() {
-    const { films, setLogged, username } = useGlobalContext()
+    const { films, setLogged, username, setFilmId } = useGlobalContext()
     const [user, setUser] = useState(localStorage.getItem('user'));
 
     const navigate = useNavigate()
 
-    function goToReviewPage(params) {
+    function goToReviewPage(params, e) {
+
+        setFilmId(e.target.getAttribute('data-btn-attribute'))
+
+        console.log(filmId);
+
 
         return navigate(`/add/${params}`)
 
@@ -55,7 +60,7 @@ export default function HomePage() {
                             <img src={film.poster} alt="poster" style={{ width: '100%' }} />
                         </div>
                         <p className="my-3"><i className="bi bi-search-heart p-1 bg-danger border rounded text-light" /> {film.description}</p>
-                        <button className="btn bg-light" btn-attribute={film.title} onClick={() => goToReviewPage(film.title)}>Lascia una recensione</button>
+                        <button className="btn bg-light" data-btn-attribute={film.id} onClick={(e) => goToReviewPage(film.title, e)}>Lascia una recensione</button>
                     </div>
                 ))}
 
