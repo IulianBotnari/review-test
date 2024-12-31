@@ -5,8 +5,8 @@ import { useNavigate } from "react-router";
 
 
 export default function HomePage() {
-    const { films, setLogged, username, setFilmId } = useGlobalContext()
-    const [user, setUser] = useState(localStorage.getItem('user'));
+    const { films, setLogged, username, setFilmId, user, setUser } = useGlobalContext()
+
 
     const navigate = useNavigate()
 
@@ -14,7 +14,8 @@ export default function HomePage() {
 
         setFilmId(e.target.getAttribute('data-btn-attribute'))
 
-        console.log(filmId);
+
+
 
 
         return navigate(`/add/${params}`)

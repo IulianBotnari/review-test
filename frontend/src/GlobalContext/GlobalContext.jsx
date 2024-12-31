@@ -11,7 +11,8 @@ export const GlobalContext = ({ children }) => {
     const [username, setUsername] = useState('')
     const [users, setUsers] = useState({})
     const [filmId, setFilmId] = useState()
-    console.log(users);
+    const [user, setUser] = useState(localStorage.getItem('user'));
+
 
 
 
@@ -64,7 +65,12 @@ export const GlobalContext = ({ children }) => {
         username,
         users,
         setFilmId,
-        filmId
+        filmId,
+        user,
+        setUser,
+        getUsers,
+        getFilms,
+        setUsers,
 
     }
 
